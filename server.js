@@ -38,7 +38,7 @@ app.use(bodyParser.urlencoded({extended : false}))
 
 app.use(bodyParser.json())
 
-app.post("/api/shorturl/", function(req, res){
+app.post("/api/shorturl/new/", function(req, res){
   let clientReqURL = req.body.url;
   let short = shortid.generate();
   let newShortURL = short
