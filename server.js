@@ -42,6 +42,7 @@ app.post("/api/shorturl/", function(req, res){
 
   if (!isvalidURL(clientReqURL)) 
     return res.json({ error: 'invalid url' });
+
   let short = shortid.generate();
 
   let newURL = new ShortURL({
@@ -80,9 +81,9 @@ const SaveURL = function(newURLObject, res, response){
 const responsefunction = function(newURL, res){
   res.json({
     "saved": true,
-    "short_url": newURL.short_url,
+    "short": newURL.short_url,
     "original_url": newURL.original_url,
-    "short": newURL.short
+    "short_url": newURL.short
   });
 }
 
@@ -105,7 +106,7 @@ function isvalidURL(str) {
     '(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*'+ // port and path
     '(\\?[;&a-z\\d%_.~+=-]*)?'+ // query string
     '(\\#[-a-z\\d_]*)?$','i'); // fragment locator
-  return !!pattern.test(str);
+  return pattern.test(str);
 }
 
 
